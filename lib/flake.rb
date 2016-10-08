@@ -2,8 +2,8 @@ require "flake/version"
 require "flake/flakifier"
 
 module Flake
-  VERSION = "0.0.0"
   extend self
+
 
   # TODO: Adapt to class methods.
   def on(target_class, target_method, error)
