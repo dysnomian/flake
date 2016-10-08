@@ -1,8 +1,10 @@
 # Flake
+[![Build Status](https://travis-ci.org/dysnomian/flake.svg?branch=master)](https://travis-ci.org/dysnomian/flake)
+[![Code Climate](https://codeclimate.com/github/dysnomian/flake/badges/gpa.svg)](https://codeclimate.com/github/dysnomian/flake)
+[![Security](https://hakiri.io/github/dysnomian/flake/master.svg)](https://hakiri.io/github/dysnomian/flake/master)
+[![Inline Docs](http://inch-ci.org/github/dysnomian/flake.svg?branch=master)](http://inch-ci.org/github/dysnomian/flake)
 
-Welcome to your new gem! In this directory, you'll find the files you need to be able to package up your Ruby library into a gem. Put your Ruby code in the file `lib/flake`. To experiment with that code, run `bin/console` for an interactive prompt.
-
-TODO: Delete this and the text above, and describe your gem
+Simulate your flaky methods deterministically.
 
 ## Installation
 
@@ -22,7 +24,13 @@ Or install it yourself as:
 
 ## Usage
 
-TODO: Write usage instructions here
+For Minitest:
+
+```ruby
+setup do
+  Flake.on(HyperdriveMotivator, :activate_jump, AlluvialDamperError)
+end
+```
 
 ## Development
 
@@ -38,4 +46,3 @@ Bug reports and pull requests are welcome on GitHub at https://github.com/[USERN
 ## License
 
 The gem is available as open source under the terms of the [MIT License](http://opensource.org/licenses/MIT).
-
