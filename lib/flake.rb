@@ -1,19 +1,19 @@
-require "flake/version"
-require "flake/flakifier"
+# frozen_string_literal: true
+require 'flake/version'
+require 'flake/flakifier'
 
+# Utility module to clobber methods.
 module Flake
-  extend self
-
-
-  # TODO: Adapt to class methods.
-  def on(target_class, target_method, error)
+  def self.on(target_class, target_method, error)
     patch = patching_code(target_method, error)
     target_class.class_eval(patch)
   end
 
-  private
+  class << self
+    private
 
-  def patching_code(target_method, error)
-    "extend Flakifier; flakify :#{target_method.to_s}, #{error.to_s}"
+    def patching_code(target_method, error)
+      "extend Flakifier; flakify :#{target_method}, #{error}"
+    end
   end
 end

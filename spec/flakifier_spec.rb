@@ -1,9 +1,11 @@
+# frozen_string_literal: true
+
 require 'spec_helper'
 
 class ExhaustPortError < StandardError; end
 
 describe Flakifier do
-  describe "flakify" do
+  describe 'flakify' do
     let(:klass) do
       Class.new do
         extend Flakifier
@@ -21,12 +23,12 @@ describe Flakifier do
 
     let(:instantiated) { klass.new }
 
-    it "replaces the method with a flaky one" do
+    it 'replaces the method with a flaky one' do
       expect { instantiated.fire_main_cannon }
         .to raise_error(ExhaustPortError)
     end
 
-    context "on the second try" do
+    context 'on the second try' do
       before do
         begin
           instantiated.fire_main_cannon
@@ -34,7 +36,7 @@ describe Flakifier do
         end
       end
 
-      it "behaves normally" do
+      it 'behaves normally' do
         expect(instantiated.fire_main_cannon).to eq(:boom)
       end
     end

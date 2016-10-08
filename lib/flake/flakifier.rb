@@ -1,3 +1,8 @@
+# frozen_string_literal: true
+
+# Module included in the target class. Generates a new method with the
+# appropriate flakiness parameters, then replaces the original with it with the
+# .flakify method.
 module Flakifier
   # TODO: Add ability to supply number of retries
   def flakify(method_name, error)
@@ -13,11 +18,11 @@ module Flakifier
   private
 
   def __original_method_name(method_name)
-    "__original_".concat(method_name.to_s).to_sym
+    '__original_' + method_name.to_s
   end
 
   def __flaky_method_name(method_name)
-    "__flaky_".concat(method_name.to_s).to_sym
+    '__flaky_' + method_name.to_s
   end
 
   def __flaky_method(method_name, error)
@@ -25,7 +30,7 @@ module Flakifier
        @__flaky_method_call_count ||= 0;
        while @__flaky_method_call_count < 1;
          @__flaky_method_call_count += 1;
-         raise #{error.to_s};
+         raise #{error};
          return;
        end;
 
